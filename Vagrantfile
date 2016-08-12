@@ -40,6 +40,8 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.hostname = "ml"
+  # config.ssh.forward_agent = true
+  # config.ssh.forward_x11 = true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -74,6 +76,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y epel-release
+    # yum groupinstall "X Window System"
     yum install -y octave
   SHELL
 end
